@@ -1,0 +1,91 @@
+Create a Python Project
+    create a Python file
+----------------------------------------
+bash:
+
+1. Navigate to project folder : cd /path/to/project
+2. Create a venve             : python3 -m venv venv
+3. source venv/bin/acitvate
+
+----------------------------------------
+Configure the Python Interpreter
+In VS Code, press Cmd+Shift+P to open the Command Palette.
+Search for Python: Select Interpreter and select it.
+Choose the Python interpreter from your virtual environment (e.g., venv/bin/python).
+----------------------------------------
+Install Dependencies (Optional)
+If your project requires additional libraries:
+
+1. Install them using pip in your virtual environment:
+
+bash
+pip install library_name
+-------------------
+2. Save your dependencies to a requirements.txt file:
+
+bash
+pip freeze > requirements.txt
+----------------------------------------
+
+Additional Tips
+Linting & Formatting: Install tools like flake8 or black for code linting and formatting.
+Debugging: Set breakpoints and use the built-in debugger for troubleshooting.
+----------------------------------------
+
+(venv)(base)arunmuniganti@Aruns-MacBook-Air RedditDataEngineering % : pip --version
+(venv)(base)arunmuniganti@Aruns-MacBook-Air RedditDataEngineering % : pip install --upgrade pip 
+(venv)(base)arunmuniganti@Aruns-MacBook-Air RedditDataEngineering % : pip --version
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+RedditDataEngineering from here:
+1.Install dependencies:
+pip install apache-airflow pandas numpy praw
+-------------------
+2. create folders config, dags, data, etls, logs, pipelines, tests, utils
+mkdir config dags data etls logs pipelines tests utils
+---------------------
+3.creates three empty files in your current working directory:
+---------------------
+touch airflow.env docker-compose.yml Dockerfile
+airflow.env         : Likely intended to store environment variables for Apache Airflow.
+docker-compose.yml  : A YAML file used to define and configure services, networks, and volumes for Docker Compose.
+Dockerfile          : A script to define a Docker image, including its dependencies, environment settings, and the commands to run.
+---------------------
+4. Lists all installed Python packages and their versions in the current environment.
+pip freeze > requirements.txt
+requirements.txt: A standard file used to specify dependencies for Python projects
+
+to check the content in the requirements.txt 
+cat requirements.txt
+---------------------
+5. docker compose up -d --build
+Rebuild the Docker images for the services (if any Dockerfile changes are made).
+Start the services in the background, based on your docker-compose.yml file.
+
+Explanation of the Command:
+docker compose up   : Starts and runs the services defined in the /docker-compose.yml/ file.
+-d                  : Stands for "detached mode." This runs the services in the background (i.e., it doesn't block your terminal).
+--build             : Forces Docker Compose to rebuild the images before starting the services, ensuring that any changes to the Dockerfile or service configurations are applied.
+
+
+    --------
+    5.1: Check if the services are running: You can check the status of the services with:
+
+    bash
+    docker compose ps
+
+    5.2: Logs (optional): To view logs of the running services, you can use:
+
+    bash
+    docker compose logs
+---------------------
+Force Rebuild:
+You can also force the rebuild of the image with the --no-cache option to bypass any cached layers:
+
+bash
+docker-compose build --no-cache
+docker-compose up -d
+---------------------
+
